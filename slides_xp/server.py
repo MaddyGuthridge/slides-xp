@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, redirect, send_from_directory
+from flask import Flask, Blueprint, redirect, send_file, send_from_directory
 from pathlib import Path
 import pyhtml as p
 
@@ -42,7 +42,7 @@ def make_blueprint(name: str, root_dir: Path):
             if file_path.suffix == ".md":
                 return str(slide(file_path))
             else:
-                return send_from_directory(root_dir, file_path.absolute())
+                return send_file(file_path.absolute())
         elif dir_contains_md(file_path):
             # Dir with markdown, render a list of slides
             return str(
