@@ -21,49 +21,50 @@ def error(code: int, message: str):
     ), code
 
 
-def make_blueprint(name: str, root: Path):
+def make_blueprint(name: str, root_dir: Path):
     bp = Blueprint(name, __name__, url_prefix=f"/{name}")
 
     @bp.get("/", defaults={"path": ""})
     @bp.get("/<path:path>")
     def endpoint(path: str):
-        full_path = root / path
+        file_path = root_dir / path
+        url = f"/{name}/{path}".removesuffix("/")
         # Root path must be a parent of `full_path` to prevent escaping the
         # specified directories
-        if root not in [full_path, *full_path.parents]:
+        if root_dir not in [file_path, *file_path.parents]:
             return error(403, "Illegal path")
         # 404 if file/dir does not exist
-        if not full_path.exists():
+        if not file_path.exists():
             return error(404, "File not found")
         # If file, send it
-        if full_path.is_file():
+        if file_path.is_file():
             # Render markdown files as HTML
-            if full_path.suffix == ".md":
-                return str(slide(full_path))
+            if file_path.suffix == ".md":
+                return str(slide(file_path))
             else:
-                return send_from_directory(root, full_path.absolute())
-        if dir_contains_md(full_path):
+                return send_from_directory(root_dir, file_path.absolute())
+        elif dir_contains_md(file_path):
             # Dir with markdown, render a list of slides
             return str(
                 picker(
-                    str(root),
+                    str(root_dir),
                     [
-                        Choice(str(full_path / p.name), p.name)
-                        for p in slides_list(full_path)
+                        Choice(p.name, f"{url}/{p.name}")
+                        for p in slides_list(file_path)
                     ],
-                    parent=str(root.parent),
+                    parent=str(file_path.parent),
                 )
             )
         else:
             # Otherwise, dir with no markdown, so render a list of subdirs
             return str(
                 picker(
-                    str(root),
+                    str(root_dir),
                     [
-                        Choice(str(full_path / p.name), p.name)
-                        for p in list_subdirs(full_path)
+                        Choice(p.name, f"{url}/{p.name}")
+                        for p in list_subdirs(file_path)
                     ],
-                    parent=str(root.parent),
+                    parent=str(file_path.parent),
                 )
             )
 

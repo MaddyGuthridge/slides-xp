@@ -18,6 +18,9 @@ dependencies = [
 [tool.poetry.scripts]
 sxp = "slides_xp.__main__:cli"
 
+[tool.ruff]
+line-length = 79
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
