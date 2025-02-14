@@ -10,6 +10,7 @@ def slide(file: Path) -> p.html:
 
     curr_index = slides.index(file)
 
+    first = f"'{slides[0]}'" if len(slides) else "null"
     prev = f"'{slides[curr_index - 1]}'" if curr_index > 0 else "null"
     next = f"'{slides[curr_index + 1]}'" if curr_index < len(slides) - 1 else "null"
 
@@ -24,6 +25,7 @@ def slide(file: Path) -> p.html:
         p.body(
             p.script(f"""
                 window.sxp = {{
+                    first: {first},
                     prev: {prev},
                     next: {next},
                 }};

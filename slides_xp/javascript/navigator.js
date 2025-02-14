@@ -10,6 +10,11 @@ window.addEventListener("keydown", e => {
 
   let target = null;
   switch (e.key) {
+    case "0":
+      if (window.sxp.prev) {
+        target = `${root}${window.sxp.first}`;
+      }
+      break;
     case "ArrowLeft":
       if (window.sxp.prev) {
         target = `${root}${window.sxp.prev}`;
