@@ -1,9 +1,13 @@
-from flask import Flask, Blueprint, redirect, send_file
+from flask import Flask, Blueprint, redirect, send_file, send_from_directory
 from pathlib import Path
 import pyhtml as p
 
 from slides_xp.file_picker import file_picker
+from slides_xp.slide import slide
 from slides_xp.util import dir_contains_md, first_slide, list_subdirs
+
+
+lib_dir = Path(__file__).parent
 
 
 def error(code: int, message: str):
@@ -33,7 +37,11 @@ def make_blueprint(name: str, root: Path):
             return error(404, "File not found")
         # If file, send it
         if full_path.is_file():
-            return send_file(full_path.absolute())
+            # Render markdown files as HTML
+            if full_path.suffix == ".md":
+                return str(slide(full_path))
+            else:
+                return send_from_directory(root, full_path.absolute())
         # If dir with markdown, redirect to first slide
         if dir_contains_md(full_path):
             return redirect(f"/{full_path}/{first_slide(full_path).name}")
@@ -74,7 +82,7 @@ def make_app(paths: list[Path]):
         if len(paths) == 1:
             return redirect(f"/{paths[0].name}/")
         else:
-            options = file_picker("/", [p.name for p in paths])
+            options = file_picker("", [p.name for p in paths])
             return str(
                 p.html(
                     p.head(
@@ -85,6 +93,10 @@ def make_app(paths: list[Path]):
                     ),
                 )
             )
+
+    @app.get("/javascript/<path>")
+    def scripts(path):
+        return send_from_directory(lib_dir / "javascript", path)
 
     return app
 
