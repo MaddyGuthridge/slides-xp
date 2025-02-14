@@ -8,10 +8,19 @@ A simple but flexible markdown slide-show viewer.
 sxp <directories to serve>
 ```
 
-## Custom CSS
+## Theming
 
 You can use the `--theme` option to specify the a built-in theme, or a path to
 a directory containing CSS theme files.
+
+The built-in themes are:
+
+* `default`
+* `xp`
+
+### Custom CSS
+
+A theme directory should contain (at least) these files:
 
 * `main.css`: main stylesheet. Always loaded.
 * `slide.css`: stylesheet for slide pages.
