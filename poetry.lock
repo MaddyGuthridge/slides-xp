@@ -193,14 +193,29 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyhtml-enhanced"
-version = "2.2.0"
+version = "2.2.2"
 description = "A library for building HTML documents with a simple and learnable syntax"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "pyhtml_enhanced-2.2.0-py3-none-any.whl", hash = "sha256:b561c8a4e3d8fc5f1942544c5b70b21e3fc553b94ad902f0474e545af6102b92"},
-    {file = "pyhtml_enhanced-2.2.0.tar.gz", hash = "sha256:7c47687791a6209ad95bfa54149576bafec7f76441490ea0975752530f799f8e"},
+    {file = "pyhtml_enhanced-2.2.2-py3-none-any.whl", hash = "sha256:6da369ac14657fe34c5179eece2a8000c989fbffb2105f082a4ccc74ea69a4db"},
+    {file = "pyhtml_enhanced-2.2.2.tar.gz", hash = "sha256:972752a8d3cdbadf2237c6d9925509710cc2325943c856589f59462155190445"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.12.2"
+
+[[package]]
+name = "typing-extensions"
+version = "4.12.2"
+description = "Backported and Experimental Type Hints for Python 3.8+"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
+    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
 [[package]]
