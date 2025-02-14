@@ -40,3 +40,9 @@
     }
 
 }
+
+/* Prevent images from exceeding the bounds of the slide */
+.slide-content img {
+    max-width: 100%;
+    max-height: 50vh;
+}
