@@ -19,6 +19,7 @@ def slide(file: Path) -> p.html:
             p.script(src="/javascript/navigator.js", defer=True),
             p.link(href="/css/root.css", rel="stylesheet"),
             p.link(href="/theme/main.css", rel="stylesheet"),
+            p.link(href="/theme/slide.css", rel="stylesheet"),
         ),
         p.body(
             p.script(f"""

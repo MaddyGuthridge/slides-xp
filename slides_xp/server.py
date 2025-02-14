@@ -2,9 +2,9 @@ from flask import Flask, Blueprint, redirect, send_from_directory
 from pathlib import Path
 import pyhtml as p
 
-from slides_xp.file_picker import file_picker
+from slides_xp.picker import Choice, picker
 from slides_xp.slide import slide
-from slides_xp.util import dir_contains_md, first_slide, list_subdirs
+from slides_xp.util import dir_contains_md, list_subdirs, slides_list
 
 
 lib_dir = Path(__file__).parent
@@ -42,24 +42,28 @@ def make_blueprint(name: str, root: Path):
                 return str(slide(full_path))
             else:
                 return send_from_directory(root, full_path.absolute())
-        # If dir with markdown, redirect to first slide
         if dir_contains_md(full_path):
-            return redirect(f"/{full_path}/{first_slide(full_path).name}")
+            # Dir with markdown, render a list of slides
+            return str(
+                picker(
+                    str(root),
+                    [
+                        Choice(str(full_path / p.name), p.name)
+                        for p in slides_list(full_path)
+                    ],
+                    parent=str(root.parent),
+                )
+            )
         else:
             # Otherwise, dir with no markdown, so render a list of subdirs
-            options = file_picker(
-                str(root),
-                [p.name for p in list_subdirs(full_path)],
-                parent=str(root.parent),
-            )
             return str(
-                p.html(
-                    p.head(
-                        p.title("Slides XP"),
-                    ),
-                    p.body(
-                        options,
-                    ),
+                picker(
+                    str(root),
+                    [
+                        Choice(str(full_path / p.name), p.name)
+                        for p in list_subdirs(full_path)
+                    ],
+                    parent=str(root.parent),
                 )
             )
 
@@ -92,15 +96,10 @@ def make_app(paths: list[Path], theme: str | None = None):
         if len(paths) == 1:
             return redirect(f"/{paths[0].name}/")
         else:
-            options = file_picker("", [p.name for p in paths])
             return str(
-                p.html(
-                    p.head(
-                        p.title("Slides XP"),
-                    ),
-                    p.body(
-                        options,
-                    ),
+                picker(
+                    "Slides XP",
+                    [Choice(f"/{p.name}", p.name) for p in paths],
                 )
             )
 

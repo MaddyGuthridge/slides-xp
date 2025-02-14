@@ -1,28 +1,28 @@
 /* Comment */
 .highlight .c1 {
-    color: var(--hl-comment);
+    color: var(--hl-comment, black);
 }
 /* Documentation */
 .highlight .sd {
-    color: var(--hl-doc);
+    color: var(--hl-doc, black);
 }
 /* Keyword */
 .highlight .k {
-    color: var(--hl-keyword);
+    color: var(--hl-keyword, black);
 }
 /* Variable */
 .highlight .n {
-    color: var(--hl-var);
+    color: var(--hl-var, black);
 }
 /* Function name */
 .highlight .nf {
-    color: var(--hl-func);
+    color: var(--hl-func, black);
 }
 /* Class name */
 .highlight .nb {
-    color: var(--hl-type);
+    color: var(--hl-type, black);
 }
 /* String */
 .highlight .s2 {
-    color: var(--hl-string);
+    color: var(--hl-string, black);
 }

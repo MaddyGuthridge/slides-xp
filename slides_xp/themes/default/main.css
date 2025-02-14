@@ -1,7 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-size: 2rem;
 }
 
@@ -16,7 +18,8 @@ body {
     border-radius: 10px;
     padding: 20px;
 }
-.highlight > pre {
+
+.highlight>pre {
     margin: 0px;
 }
 

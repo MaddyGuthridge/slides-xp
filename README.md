@@ -17,6 +17,8 @@ CSS files.
 * `slide.css`: stylesheet for slide pages.
 * `picker.css`: stylesheet for slide picker page.
 
+These stylesheets are mounted at the `/theme` endpoint.
+
 Within these stylesheets, the following classes can be selected.
 
 * `.highlight`: code blocks
