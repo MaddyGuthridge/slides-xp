@@ -1,0 +1,28 @@
+/* Comment */
+.highlight .c1 {
+    color: var(--hl-comment);
+}
+/* Documentation */
+.highlight .sd {
+    color: var(--hl-doc);
+}
+/* Keyword */
+.highlight .k {
+    color: var(--hl-keyword);
+}
+/* Variable */
+.highlight .n {
+    color: var(--hl-var);
+}
+/* Function name */
+.highlight .nf {
+    color: var(--hl-func);
+}
+/* Class name */
+.highlight .nb {
+    color: var(--hl-type);
+}
+/* String */
+.highlight .s2 {
+    color: var(--hl-string);
+}

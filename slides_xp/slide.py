@@ -17,7 +17,8 @@ def slide(file: Path) -> p.html:
         p.head(
             p.title("Slides XP"),
             p.script(src="/javascript/navigator.js", defer=True),
-            p.link(href="/css/main.css", rel="stylesheet"),
+            p.link(href="/css/root.css", rel="stylesheet"),
+            p.link(href="/theme/main.css", rel="stylesheet"),
         ),
         p.body(
             p.script(f"""

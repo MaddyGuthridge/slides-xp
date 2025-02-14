@@ -30,6 +30,11 @@ Slides XP CLI
     required=True,
 )
 @click.option(
+    "--theme",
+    envvar="SXP_THEME",
+    help="Theme directory to serve CSS stylesheets from",
+)
+@click.option(
     "-h",
     "--host",
     default="localhost",
@@ -52,6 +57,7 @@ Slides XP CLI
 def cli(
     paths: tuple[Path, ...],
     *,
+    theme: str | None,
     host: str,
     port: int,
     debug: bool,
@@ -59,6 +65,6 @@ def cli(
     """
     Entrypoint to CLI.
     """
-    app = make_app(list(paths))
+    app = make_app(list(paths), theme)
 
     app.run(host, port, debug)

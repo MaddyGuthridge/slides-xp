@@ -66,7 +66,17 @@ def make_blueprint(name: str, root: Path):
     return bp
 
 
-def make_app(paths: list[Path]):
+def make_app(paths: list[Path], theme: str | None = None):
+    if theme is None:
+        theme_dir = lib_dir / "themes" / "default"
+    elif Path(theme).is_dir():
+        theme_dir = Path(theme)
+    elif (lib_dir / "themes" / theme).is_dir():
+        theme_dir = lib_dir / "themes" / theme
+    else:
+        # Invalid theme
+        theme_dir = lib_dir / "themes" / "default"
+
     app = Flask(__name__)
 
     for path in paths:
@@ -99,8 +109,12 @@ def make_app(paths: list[Path]):
         return send_from_directory(lib_dir / "javascript", path)
 
     @app.get("/css/<path>")
-    def styles(path):
+    def css(path):
         return send_from_directory(lib_dir / "css", path)
+
+    @app.get("/theme/<path>")
+    def theme_css(path):
+        return send_from_directory(theme_dir, path)
 
     return app
 
