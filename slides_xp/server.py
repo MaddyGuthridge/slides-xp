@@ -100,7 +100,7 @@ def make_app(paths: list[Path], theme: str | None = None):
             return str(
                 picker(
                     "Slides XP",
-                    [Choice(f"/{p.name}", p.name) for p in paths],
+                    [Choice(p.name, f"/{p.name}") for p in paths],
                 )
             )
 

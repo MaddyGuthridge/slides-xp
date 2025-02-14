@@ -22,6 +22,9 @@ These stylesheets are mounted at the `/theme` endpoint.
 Within these stylesheets, the following classes can be selected.
 
 * `.highlight`: code blocks
+* `.slide-content`: slide content
+* `.picker-box`: slide picker
+* `.picker-item`: slide within slide picker
 
 And the following variables are available:
 
