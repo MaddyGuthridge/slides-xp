@@ -1,31 +1,19 @@
+html {
+    background-image: url('/theme/bliss.jpg');
+    background-size: cover;
+    min-height: 100vh;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 2rem;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
 }
 
 .highlight {
-    font-family: monospace;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        --hl-comment: rgb(116, 116, 116);
-        --hl-doc: rgb(87, 151, 61);
-        --hl-keyword: rgb(122, 62, 157);
-        --hl-var: rgb(122, 62, 157);
-        --hl-func: rgb(170, 55, 49);
-        --hl-class: rgb(122, 62, 157);
-        --hl-string: rgb(87, 151, 61);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --hl-comment: rgb(128, 135, 184);
-        --hl-doc: rgb(128, 135, 184);
-        --hl-keyword: rgb(254, 222, 93);
-        --hl-var: rgb(208, 106, 183);
-        --hl-func: rgb(50, 196, 198);
-        --hl-class: rgb(214, 62, 75);
-        --hl-string: rgb(255, 139, 57);
-    }
+    font-family: Consolas, Hack, monospace;
 }

@@ -1,0 +1,31 @@
+.slide-content {
+    background:
+        /* Corners */
+        url('/theme/window-top-left.png') top left no-repeat,
+        url('/theme/window-top-right.png') top right no-repeat,
+        url('/theme/window-bottom-left.png') bottom left no-repeat,
+        url('/theme/window-bottom-right.png') bottom right no-repeat,
+        /* Edges */
+        url('/theme/window-top.png') top repeat-x,
+        url('/theme/window-bottom.png') bottom repeat-x,
+        url('/theme/window-left.png') left repeat-y,
+        url('/theme/window-right.png') right repeat-y,
+        /* Center */
+        url('/theme/window-center.png') center repeat;
+
+    clip-path: inset(7px 9px 7px 7px round 3px);
+
+    padding: 30px;
+
+    margin: 100px;
+}
+
+:root {
+    --hl-comment: rgb(125, 131, 136);
+    --hl-doc: rgb(125, 131, 136);
+    --hl-keyword: rgb(223, 58, 72);
+    --hl-var: rgb(35, 35, 35);
+    --hl-func: rgb(129, 98, 199);
+    --hl-class: rgb(129, 98, 199);
+    --hl-string: rgb(19, 42, 108);
+}

@@ -10,8 +10,8 @@ sxp <directories to serve>
 
 ## Custom CSS
 
-You can use the `--css` option to specify the path to a directory containing
-CSS files.
+You can use the `--theme` option to specify the a built-in theme, or a path to
+a directory containing CSS theme files.
 
 * `main.css`: main stylesheet. Always loaded.
 * `slide.css`: stylesheet for slide pages.
