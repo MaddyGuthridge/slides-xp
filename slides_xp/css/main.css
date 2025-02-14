@@ -1,0 +1,28 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.highlight {
+    font-family: monospace;
+}
+
+/* Comment */
+.highlight .c1 {
+    color: rgb(0, 0, 88);
+}
+/* Keyword */
+.highlight .k {
+    color: rgb(104, 0, 136);
+}
+/* Name */
+.highlight .n {
+    color: rgb(0, 100, 167);
+}
+/* Callable name */
+.highlight .nf {
+    color: rgb(167, 0, 78);
+}
+/* String */
+.highlight .s2 {
+    color: rgb(0, 117, 72);
+}

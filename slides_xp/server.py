@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, redirect, send_file, send_from_directory
+from flask import Flask, Blueprint, redirect, send_from_directory
 from pathlib import Path
 import pyhtml as p
 
@@ -97,6 +97,10 @@ def make_app(paths: list[Path]):
     @app.get("/javascript/<path>")
     def scripts(path):
         return send_from_directory(lib_dir / "javascript", path)
+
+    @app.get("/css/<path>")
+    def styles(path):
+        return send_from_directory(lib_dir / "css", path)
 
     return app
 
