@@ -18,6 +18,12 @@ The built-in themes are:
 * `default`
 * `xp`
 
+### Python-generated slides
+
+Python files that end with `.slide.py` can be used to generate slides using
+Python, which is useful for custom themed slides. The file should include a
+`render` function that returns a `pyhtml` tag.
+
 ### Custom CSS
 
 A theme directory should contain (at least) these files:

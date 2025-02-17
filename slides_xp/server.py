@@ -4,7 +4,7 @@ import pyhtml as p
 
 from slides_xp.picker import Choice, picker
 from slides_xp.slide import slide
-from slides_xp.util import dir_contains_md, list_subdirs, slides_list
+from slides_xp.util import dir_contains_slides, list_subdirs, slides_list
 
 
 lib_dir = Path(__file__).parent
@@ -39,11 +39,11 @@ def make_blueprint(name: str, root_dir: Path):
         # If file, send it
         if file_path.is_file():
             # Render markdown files as HTML
-            if file_path.suffix == ".md":
+            if file_path.suffix in [".md", ".py"]:
                 return str(slide(file_path))
             else:
                 return send_file(file_path.absolute())
-        elif dir_contains_md(file_path):
+        elif dir_contains_slides(file_path):
             # Dir with markdown, render a list of slides
             return str(
                 picker(
