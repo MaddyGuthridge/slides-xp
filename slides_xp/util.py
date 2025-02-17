@@ -19,6 +19,10 @@ def first_slide(path: Path) -> Path:
     return next(iter(slides_list(path)))
 
 
+def file_is_slide(path: Path):
+    return any(path.name.endswith(suffix) for suffix in [".md", ".slide.py"])
+
+
 def slides_list(path: Path) -> list[Path]:
     """
     Returns a slides list for the given directory.
@@ -27,8 +31,7 @@ def slides_list(path: Path) -> list[Path]:
         [
             child
             for child in path.iterdir()
-            if child.is_file()
-            and child.suffixes in [[".md"], [".slide", ".py"]]
+            if child.is_file() and file_is_slide(child)
         ],
         key=lambda i: i.name,
     )
