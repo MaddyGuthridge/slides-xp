@@ -18,6 +18,9 @@
     padding: 30px;
 
     margin: 100px;
+
+    width: fit-content;
+    max-width: 90vw;
 }
 
 /* Bootloader slide */
