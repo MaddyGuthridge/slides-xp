@@ -20,6 +20,89 @@
     margin: 100px;
 }
 
+/* Bootloader slide */
+.bootloader {
+    margin: 0px;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.bootloader h2 {
+    margin: 0;
+}
+
+.bootloader h1 {
+    margin: 0;
+}
+
+.bootloader-title {
+    padding-top: 10vh;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: -50px;
+    width: 100%;
+}
+
+.bootloader-subtitle {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    width: 100%;
+}
+
+.windows-logo {
+    width: 20%;
+}
+
+.xp {
+    color: rgb(225, 94, 35);
+    padding-bottom: 30px;
+}
+
+/*
+Loading animation, derived from:
+https://codepen.io/duptitung/pen/XMVNyZ
+*/
+.boot-animation {
+    width: 150px;
+    height: 10px;
+    border: 2px solid #b2b2b2;
+    border-radius: 7px;
+    margin: 0 auto;
+    padding: 2px 1px;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.boot-animation>div {
+    width: 9px;
+    height: 100%;
+    background: linear-gradient(to bottom, #2838c7 0%, #5979ef 17%, #869ef3 32%, #869ef3 45%, #5979ef 59%, #2838c7 100%);
+    display: inline-block;
+    margin-right: 2px;
+    animation: loader 2s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes loader {
+    0% {
+        transform: translate(-35px);
+    }
+
+    100% {
+        transform: translate(150px);
+    }
+}
+
+.gap {
+    flex-grow: 1;
+}
+
+
 :root {
     --hl-comment: rgb(125, 131, 136);
     --hl-doc: rgb(125, 131, 136);
