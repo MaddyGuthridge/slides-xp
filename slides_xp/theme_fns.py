@@ -19,4 +19,4 @@ class Theme:
         """
         Given a list of slides, return HTML for a slide picker.
         """
-        ...
+        return NotImplemented
