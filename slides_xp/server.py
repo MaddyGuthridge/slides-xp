@@ -1,5 +1,5 @@
 from flask import Flask, Blueprint, redirect, send_file, send_from_directory
-from pathlib import Path
+from pathlib import Path, PosixPath
 import pyhtml as p
 
 from slides_xp.picker import Choice, picker
@@ -28,7 +28,7 @@ def make_blueprint(name: str, root_dir: Path):
     @bp.get("/<path:path>")
     def endpoint(path: str):
         file_path = root_dir / path
-        url = f"/{name}/{path}".removesuffix("/")
+        file_url = f"/{name}/{path}".removesuffix("/")
         # Root path must be a parent of `full_path` to prevent escaping the
         # specified directories
         if root_dir not in [file_path, *file_path.parents]:
@@ -40,7 +40,7 @@ def make_blueprint(name: str, root_dir: Path):
         if file_path.is_file():
             # Render markdown files as HTML
             if file_path.suffix in [".md", ".py"]:
-                return str(slide(file_path))
+                return str(slide(file_path, PosixPath(file_url)))
             else:
                 return send_file(file_path.absolute())
         elif dir_contains_slides(file_path):
@@ -49,7 +49,7 @@ def make_blueprint(name: str, root_dir: Path):
                 picker(
                     str(root_dir),
                     [
-                        Choice(p.name, f"{url}/{p.name}")
+                        Choice(p.name, f"{file_url}/{p.name}")
                         for p in slides_list(file_path)
                     ],
                     parent=str(file_path.parent),
@@ -61,7 +61,7 @@ def make_blueprint(name: str, root_dir: Path):
                 picker(
                     str(root_dir),
                     [
-                        Choice(p.name, f"{url}/{p.name}")
+                        Choice(p.name, f"{file_url}/{p.name}")
                         for p in list_subdirs(file_path)
                     ],
                     parent=str(file_path.parent),

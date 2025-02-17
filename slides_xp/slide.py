@@ -2,7 +2,7 @@ import importlib
 import importlib.util
 import sys
 import pyhtml as p
-from pathlib import Path
+from pathlib import Path, PosixPath
 
 from slides_xp.markdown import render_markdown
 from slides_xp.util import slides_list
@@ -54,25 +54,29 @@ def markdown_slide(file: Path) -> p.Tag:
     )
 
 
-def slide(file: Path) -> p.html:
-    slides = list(slides_list(file.parent))
+def slide(file_path: Path, file_url: PosixPath) -> p.html:
+    slides = list(slides_list(file_path.parent))
 
-    curr_index = slides.index(file)
+    curr_index = slides.index(file_path)
 
-    first = f"'{slides[0]}'" if len(slides) else "null"
-    prev = f"'{slides[curr_index - 1]}'" if curr_index > 0 else "null"
+    first = f"'{file_url.parent / slides[0].name}'" if len(slides) else "null"
+    prev = (
+        f"'{file_url.parent / slides[curr_index - 1].name}'"
+        if curr_index > 0
+        else "null"
+    )
     next = (
-        f"'{slides[curr_index + 1]}'"
+        f"'{file_url.parent / slides[curr_index + 1].name}'"
         if curr_index < len(slides) - 1
         else "null"
     )
 
-    if file.suffix == ".py":
-        rendered = python_slide(file)
-    elif file.suffix == ".md":
-        rendered = markdown_slide(file)
+    if file_path.suffix == ".py":
+        rendered = python_slide(file_path)
+    elif file_path.suffix == ".md":
+        rendered = markdown_slide(file_path)
     else:
-        raise ValueError(f"File '{file}' cannot be rendered")
+        raise ValueError(f"File '{file_path}' cannot be rendered")
 
     return p.html(
         p.head(
