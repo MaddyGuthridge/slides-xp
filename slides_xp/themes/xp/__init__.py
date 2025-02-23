@@ -2,7 +2,7 @@
 slides_xp / Windows XP theme.
 """
 
-from textwrap import dedent
+import random
 import pyhtml as p
 
 
@@ -36,14 +36,19 @@ def make_bsod_slide(
     slide_type: str,
     instructions: str,
 ) -> p.div:
+    exc_addr = f"{random.randint(0x0000_0000, 0xFFFF_FFFF):08X}"
+    vxd_id = f"{random.randint(1, 0xFF):02X}"
+    vxd_addr = f"{random.randint(0x1000, 0xFFFF):04X}"
     return p.div(class_="bsod")(
-        p.div(class_="bsod-title")("Windows"),
+        p.div(class_="bsod-title")("SLIDES XP"),
         p.pre(
-            dedent(f"""
-            A fatal exception has occurred at 00:C562F1B7 in VXD ctpci9x(05) +
-            00001853, The {slide_type} will be terminated.
-            """),
-            instructions,
+            f"A fatal exception has occurred at 00:{exc_addr} in VXD "
+            f"sdxp9x({vxd_id}) + 0000{vxd_addr}, The {slide_type} will be "
+            "terminated."
         ),
-        p.div("Press any key to continue _"),
+        p.pre(instructions),
+        p.span(
+            p.pre("Press any key to continue"),
+            p.pre(class_="caret")("_"),
+        ),
     )

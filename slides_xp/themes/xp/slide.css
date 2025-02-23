@@ -105,6 +105,62 @@ https://codepen.io/duptitung/pen/XMVNyZ
     flex-grow: 1;
 }
 
+/* BSOD slide */
+
+.bsod {
+    margin: 0px;
+    height: 100vh;
+    background-color: #0102AC;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bsod-title {
+    background-color: white;
+    color: #0102AC;
+    padding: 5px 20px;
+    font-weight: bold;
+}
+
+.bsod pre {
+    white-space: pre-wrap;
+    width: 50%;
+    min-width: 800px;
+}
+
+.bsod span {
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+}
+
+.bsod span pre {
+    width: fit-content;
+    min-width: fit-content;
+}
+
+/* Caret animation: https://css-tricks.com/almanac/properties/c/caret/ */
+.bsod .caret {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        color: transparent;
+    }
+
+    50% {
+        color: #fff;
+    }
+}
+
+
+/* Syntax highlighting */
 
 :root {
     --hl-comment: rgb(125, 131, 136);
