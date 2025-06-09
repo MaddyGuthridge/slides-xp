@@ -2,10 +2,22 @@
 
 A simple but flexible markdown slide-show viewer.
 
+## Installing
+
+```sh
+pip install slides-xp
+```
+
 ## Running
 
 ```sh
 sxp <directories to serve>
+```
+
+Or, without installation, using `uv`:
+
+```sh
+uvx slides-xp <directories to serve>
 ```
 
 ## Theming
