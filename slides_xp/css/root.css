@@ -46,3 +46,27 @@
     max-width: 100%;
     max-height: 50vh;
 }
+
+/* Code block highlighting */
+p code,
+ol code,
+ul code {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+p code,
+ol code,
+ul code,
+pre {
+    background-color: rgb(245, 245, 245);
+    border-color: rgb(231, 231, 231);
+    border-style: solid;
+    border-width: 1px;
+    /* Kinda bold but not obnoxiously so */
+    font-weight: 600;
+}
+/* Code blocks */
+pre {
+    padding: 1em;
+    border-radius: 5px;
+}
