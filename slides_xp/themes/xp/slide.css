@@ -126,6 +126,8 @@ https://codepen.io/duptitung/pen/XMVNyZ
 }
 
 .bsod pre {
+    background-color: transparent;
+    border: none;
     white-space: pre-wrap;
     width: 50%;
     min-width: 800px;
