@@ -1,6 +1,6 @@
 [project]
 name = "slides-xp"
-version = "0.0.6"
+version = "0.0.7"
 description = ""
 authors = [{ name = "Maddy Guthridge", email = "hello@maddyguthridge.com" }]
 readme = "README.md"
