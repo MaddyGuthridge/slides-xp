@@ -1,6 +1,6 @@
 [project]
 name = "slides-xp"
-version = "0.0.5"
+version = "0.0.6"
 description = ""
 authors = [{ name = "Maddy Guthridge", email = "hello@maddyguthridge.com" }]
 readme = "README.md"
@@ -15,6 +15,7 @@ dependencies = [
 
 [project.scripts]
 sxp = "slides_xp.__main__:cli"
+slides-xp = "slides_xp.__main__:cli"
 
 [tool.poetry]
 include = ["py.typed", "css/*", "javascript/*", "themes/*"]
