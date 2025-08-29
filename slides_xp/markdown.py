@@ -5,6 +5,7 @@ Render markdown as HTML
 from typing import cast
 import mistune
 from pygments import highlight
+import pygments.util
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import html
 
@@ -17,9 +18,12 @@ class HighlightRenderer(mistune.HTMLRenderer):
 
     def block_code(self, code, info=None):
         if info:
-            lexer = get_lexer_by_name(info, stripall=True)
-            formatter = html.HtmlFormatter()
-            return highlight(code, lexer, formatter)
+            try:
+                lexer = get_lexer_by_name(info, stripall=True)
+                formatter = html.HtmlFormatter()
+                return highlight(code, lexer, formatter)
+            except pygments.util.ClassNotFound:
+                pass
         return "<pre><code>" + mistune.escape(code) + "</code></pre>"
 
 
