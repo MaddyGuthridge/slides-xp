@@ -1,9 +1,17 @@
 /**
  * Navigator.js
  *
- * Navigate between slides
+ * Listen for keyboard shortcuts to allow for slide navigation.
  */
 
+
+ function toggleFullScreen() {
+  if (document.fullscreenElement == null) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
 
 window.addEventListener("keydown", e => {
   const root = `${window.location.protocol}//${window.location.host}/`;
@@ -14,6 +22,9 @@ window.addEventListener("keydown", e => {
       if (window.sxp.prev) {
         target = `${root}${window.sxp.first}`;
       }
+      break;
+    case "f":
+      toggleFullScreen();
       break;
     case "ArrowLeft":
       if (window.sxp.prev) {
