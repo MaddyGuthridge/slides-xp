@@ -4,20 +4,26 @@ CLI
 Main entrypoint to the program.
 """
 
+from importlib.metadata import version
 from pathlib import Path
 
 import click
 
 from slides_xp import make_app
 
-HELP_TEXT = """
+PACKAGE = "slides_xp"
+
+VERSION = version(PACKAGE)
+
+HELP_TEXT = f"""
 sxp
 
-Slides XP CLI
+Slides XP CLI, version {VERSION}
 """
 
 
 @click.command("sxp", help=HELP_TEXT, options_metavar="<options>")
+@click.version_option(VERSION, package_name=PACKAGE)
 @click.argument(
     "paths",
     type=click.Path(
@@ -40,7 +46,7 @@ Slides XP CLI
     "--host",
     default="localhost",
     envvar="HOST",
-    help="Port to run server on",
+    help="Hostname or IP to listen on",
 )
 @click.option(
     "-p",
