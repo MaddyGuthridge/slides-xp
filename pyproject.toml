@@ -3,8 +3,8 @@ name = "slides-xp"
 version = "0.0.9"
 description = ""
 authors = [{ name = "Maddy Guthridge", email = "hello@maddyguthridge.com" }]
-readme = "README.md"
 requires-python = ">=3.11"
+readme = "README.md"
 dependencies = [
     "flask (>=3.1.0,<4.0.0)",
     "pyhtml-enhanced (>=2.2.0,<3.0.0)",
@@ -17,23 +17,49 @@ dependencies = [
 sxp = "slides_xp.__main__:cli"
 slides-xp = "slides_xp.__main__:cli"
 
-[tool.poetry]
-include = ["py.typed", "css/*", "javascript/*", "themes/*"]
+[dependency-groups]
+dev = [
+    "ruff>=0.9.6,<0.10",
+    "mypy>=1.15.0,<2",
+    "pytest>=8.3.4,<9",
+    "types-pygments>=2.19.0.20250107,<3",
+    "coverage>=7.6.12,<8",
+]
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.9.6"
-mypy = "^1.15.0"
-pytest = "^8.3.4"
-types-pygments = "^2.19.0.20250107"
-coverage = "^7.6.12"
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
 
-[tool.ruff]
-line-length = 79
+[tool.uv.build-backend]
+module-name = "slides_xp"
+module-root = ""
+
+source-include = [
+    "py.typed",
+    "css/*",
+    "javascript/*",
+    "themes/*",
+]
 
 [tool.mypy]
 check_untyped_defs = true
 files = ["slides_xp", "tests"]
 
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
