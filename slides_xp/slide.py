@@ -1,8 +1,9 @@
 import importlib
 import importlib.util
 import sys
-import pyhtml as p
 from pathlib import Path, PosixPath
+
+import pyhtml as p
 
 from slides_xp.markdown import render_markdown
 from slides_xp.util import slides_list

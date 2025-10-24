@@ -4,10 +4,11 @@ CLI
 Main entrypoint to the program.
 """
 
-import click
 from pathlib import Path
-from slides_xp import make_app
 
+import click
+
+from slides_xp import make_app
 
 HELP_TEXT = """
 sxp

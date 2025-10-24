@@ -1,11 +1,11 @@
-from flask import Flask, Blueprint, redirect, send_file, send_from_directory
 from pathlib import Path, PosixPath
+
 import pyhtml as p
+from flask import Blueprint, Flask, redirect, send_file, send_from_directory
 
 from slides_xp.picker import Choice, picker
 from slides_xp.slide import slide
 from slides_xp.util import dir_contains_slides, list_subdirs, slides_list
-
 
 lib_dir = Path(__file__).parent
 

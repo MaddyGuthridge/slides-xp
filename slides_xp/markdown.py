@@ -3,11 +3,12 @@ Render markdown as HTML
 """
 
 from typing import cast
+
 import mistune
-from pygments import highlight
 import pygments.util
-from pygments.lexers import get_lexer_by_name
+from pygments import highlight
 from pygments.formatters import html
+from pygments.lexers import get_lexer_by_name
 
 
 # https://mistune.lepture.com/en/latest/guide.html#customize-renderer
