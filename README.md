@@ -1,6 +1,6 @@
 # Slides XP
 
-A simple but flexible markdown slide-show viewer.
+My home-made, ultra-janky, Windows XP-themed markdown slideshow viewer.
 
 ## Installing
 
