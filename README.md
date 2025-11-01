@@ -2,6 +2,8 @@
 
 My home-made, ultra-janky, Windows XP-themed markdown slideshow viewer.
 
+I plan to rewrite this eventually, but it works well enough for now :)
+
 ## Screenshots
 
 Title slide. Most of the text is customizable:
@@ -12,7 +14,7 @@ Regular slides, generated from a directory of Markdown files:
 
 ![A slide themed after the Windows XP desktop.](./assets/slide.jpg)
 
-Ending slide, which are also customizable:
+Ending slide, which is also customizable:
 
 ![A slide that looks like a Windows XP blue screen of death](./assets/bsod.jpg)
 
