@@ -2,6 +2,20 @@
 
 My home-made, ultra-janky, Windows XP-themed markdown slideshow viewer.
 
+## Screenshots
+
+Title slide. Most of the text is customizable:
+
+![A slide that looks like the Windows XP boot screen. The title is Maddy COMP1531 Tutorial XP](./assets/boot.jpg)
+
+Regular slides, generated from a directory of Markdown files:
+
+![A slide themed after the Windows XP desktop.](./assets/slide.jpg)
+
+Ending slide, which are also customizable:
+
+![A slide that looks like a Windows XP blue screen of death](./assets/bsod.jpg)
+
 ## Installing
 
 ```sh
