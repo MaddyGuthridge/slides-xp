@@ -26,6 +26,11 @@ dev = [
     "coverage>=7.6.12,<8",
 ]
 
+[tool.uv]
+# Exclude dependency releases newer than 1 week, in order to reduce supply-chain
+# risk.
+exclude-newer = "1 week"
+
 [build-system]
 requires = ["uv_build>=0.9.5,<0.10.0"]
 build-backend = "uv_build"
