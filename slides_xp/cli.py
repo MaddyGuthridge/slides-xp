@@ -4,10 +4,13 @@ CLI
 Main entrypoint to the program.
 """
 
+import asyncio
 from importlib.metadata import version
 from pathlib import Path
 
 import click
+from granian.constants import Interfaces
+from granian.server.embed import Server
 
 from slides_xp import make_app
 
@@ -44,16 +47,16 @@ Slides XP CLI, version {VERSION}
 @click.option(
     "-h",
     "--host",
-    default="localhost",
-    envvar="HOST",
-    help="Hostname or IP to listen on",
+    default="127.0.0.1",
+    envvar="SXP_HOST",
+    help="IP address to listen on",
 )
 @click.option(
     "-p",
     "--port",
     type=int,
     default=3000,
-    envvar="PORT",
+    envvar="SXP_PORT",
     help="Port to run server on",
 )
 @click.option(
@@ -74,4 +77,15 @@ def cli(
     """
     app = make_app(list(paths), theme)
 
-    app.run(host, port, debug)
+    if debug:
+        app.run(host, port, True)
+    else:
+        from asgiref.wsgi import WsgiToAsgi
+
+        server = Server(
+            WsgiToAsgi(app),
+            address=host,
+            port=port,
+            interface=Interfaces.ASGI,
+        )
+        asyncio.run(server.serve())
