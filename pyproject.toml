@@ -24,6 +24,10 @@ classifiers = [
     "Typing :: Typed",
 ]
 
+[project.urls]
+repository = "https://github.com/MaddyGuthridge/slides-xp"
+"Bug Tracker" = "https://github.com/MaddyGuthridge/slides-xp/issues"
+
 [project.scripts]
 sxp = "slides_xp.__main__:cli"
 slides-xp = "slides_xp.__main__:cli"
