@@ -5,6 +5,7 @@ description = "A home-made, ultra-janky, Windows XP-themed markdown slideshow vi
 authors = [{ name = "Maddy Guthridge", email = "hello@maddyguthridge.com" }]
 requires-python = ">=3.11"
 readme = "README.md"
+license = "GPL-3.0-only"
 dependencies = [
     "flask (>=3.1.3,<4.0.0)",
     "pyhtml-enhanced (>=2.2.0,<3.0.0)",
