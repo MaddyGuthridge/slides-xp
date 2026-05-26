@@ -1,6 +1,6 @@
 # Slides XP
 
-My home-made, ultra-janky, Windows XP-themed markdown slideshow viewer.
+A home-made, ultra-janky, Windows XP-themed markdown slideshow viewer.
 
 I plan to rewrite this eventually, but it works well enough for now :)
 
@@ -21,7 +21,7 @@ Ending slide, which is also customizable:
 ## Installing
 
 ```sh
-pip install slides-xp
+pipx install slides-xp
 ```
 
 ## Running
