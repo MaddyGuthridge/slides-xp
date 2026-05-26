@@ -38,7 +38,8 @@ uvx slides-xp <directories to serve>
 
 ## How it works
 
-* `flask` to serve the web app
+* `granian` as a WSGI server
+* `flask` to manage the web app
 * `pyhtml` to construct the HTML
 * `htmx` for minimal interactivity improvements
 
