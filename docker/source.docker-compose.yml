@@ -1,0 +1,26 @@
+# slides-xp
+# source.docker-compose.yml
+# Build and run slides-xp from source
+#
+# Running:
+# --------
+#
+# From the root of the repository, run:
+#
+#     docker compose -f docker/source.docker-compose.yml up --build
+
+services:
+  slides-xp:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    hostname: slides-xp
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3000:3000/tcp
+    volumes:
+      - "/path/to/your/slides:/app/slides:r"
+    environment:
+      SXP_HOST: "0.0.0.0"
+      SXP_PORT: 3000
+      SXP_THEME: "xp"

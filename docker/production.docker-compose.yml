@@ -1,0 +1,16 @@
+# slides-xp
+# production.docker-compose.yml
+# Run slides-xp from Docker Hub
+services:
+  slides-xp:
+    image: ghcr.io/maddyguthridge/slides-xp
+    hostname: slides-xp
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3000:3000/tcp
+    volumes:
+      - "/path/to/your/slides:/app/slides:r"
+    environment:
+      SXP_HOST: "0.0.0.0"
+      SXP_PORT: 3000
+      SXP_THEME: "xp"
