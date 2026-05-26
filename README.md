@@ -21,7 +21,10 @@ Ending slide, which is also customizable:
 ## Installing
 
 ```sh
+# Choose your favourite tool management system
+uv tool install slides-xp
 pipx install slides-xp
+mise install pipx:slides-xp
 ```
 
 ## Running
@@ -35,6 +38,12 @@ Or, without installation, using `uv`:
 ```sh
 uvx slides-xp <directories to serve>
 ```
+
+## Deploying
+
+Using Docker and the GitHub Container Registry.
+
+Use [`docker/production.docker-compose.yml`](https://github.com/MaddyGuthridge/slides-xp/blob/main/docker/production.docker-compose.yml).
 
 ## How it works
 
