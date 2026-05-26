@@ -1,6 +1,6 @@
 [project]
 name = "slides-xp"
-version = "0.1.0"
+version = "0.1.1"
 description = "A home-made, ultra-janky, Windows XP-themed markdown slideshow viewer."
 authors = [{ name = "Maddy Guthridge", email = "hello@maddyguthridge.com" }]
 requires-python = ">=3.11"
