@@ -82,12 +82,13 @@ def slide(file_path: Path, file_url: PosixPath) -> p.html:
     return p.html(
         p.head(
             p.title("Slides XP"),
+            p.script(src="/javascript/htmx.js"),
             p.script(src="/javascript/navigator.js", defer=True),
             p.link(href="/css/root.css", rel="stylesheet"),
             p.link(href="/theme/main.css", rel="stylesheet"),
             p.link(href="/theme/slide.css", rel="stylesheet"),
         ),
-        p.body(
+        p.body(hx_boost="true")(
             p.script(f"""
                 window.sxp = {{
                     first: {first},

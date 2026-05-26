@@ -25,6 +25,7 @@ def picker(root: str, choices: list[Choice], parent: str | None = None):
     return p.html(
         p.head(
             p.title("Slides XP"),
+            p.script(src="/javascript/htmx.js"),
             p.script(src="/javascript/navigator.js", defer=True),
             p.link(href="/css/root.css", rel="stylesheet"),
             p.link(href="/theme/main.css", rel="stylesheet"),

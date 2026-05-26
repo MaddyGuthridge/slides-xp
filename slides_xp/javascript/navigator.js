@@ -41,7 +41,18 @@ window.addEventListener("keydown", e => {
       break;
   }
   if (target !== null) {
-    window.location.href = target;
+    // change body to next page
+    htmx.ajax('GET', target, { target: 'body', swap: 'innerHTML', push: true });
     e.preventDefault();
   }
 });
+
+// When state is popped from history
+window.onpopstate = () => {
+  // Get previous page and swap it in
+  htmx.ajax('GET', window.location.pathname, {
+    target: 'body',
+    swap: 'innerHTML'
+    // Do NOT include push: true here, or it will loop history entries
+  });
+};

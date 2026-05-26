@@ -36,6 +36,12 @@ Or, without installation, using `uv`:
 uvx slides-xp <directories to serve>
 ```
 
+## How it works
+
+* `flask` to serve the web app
+* `pyhtml` to construct the HTML
+* `htmx` for minimal interactivity improvements
+
 ## Theming
 
 You can use the `--theme` option to specify the a built-in theme, or a path to
