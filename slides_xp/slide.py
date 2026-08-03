@@ -61,6 +61,7 @@ def slide(file_path: Path, file_url: PosixPath) -> p.html:
     curr_index = slides.index(file_path)
 
     first = f"'{file_url.parent / slides[0].name}'" if len(slides) else "null"
+    curr = f"'{file_url.parent / slides[curr_index].name}'"
     prev = (
         f"'{file_url.parent / slides[curr_index - 1].name}'"
         if curr_index > 0
@@ -91,6 +92,7 @@ def slide(file_path: Path, file_url: PosixPath) -> p.html:
         p.body(hx_boost="true")(
             p.script(f"""
                 window.sxp = {{
+                    curr: {curr},
                     first: {first},
                     prev: {prev},
                     next: {next},

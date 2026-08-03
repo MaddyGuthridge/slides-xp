@@ -17,10 +17,12 @@ window.addEventListener("keydown", e => {
   const root = `${window.location.protocol}//${window.location.host}/`;
 
   let target = null;
+  let curr = null;
   switch (e.key) {
     case "0":
       if (window.sxp.prev) {
         target = `${root}${window.sxp.first}`;
+        curr = window.sxp.first;
       }
       break;
     case "f":
@@ -29,11 +31,13 @@ window.addEventListener("keydown", e => {
     case "ArrowLeft":
       if (window.sxp.prev) {
         target = `${root}${window.sxp.prev}`;
+        curr = window.sxp.prev;
       }
       break;
     case "ArrowRight":
       if (window.sxp.next) {
         target = `${root}${window.sxp.next}`;
+        curr = window.sxp.next;
       }
       break;
     case "Escape":
@@ -42,7 +46,8 @@ window.addEventListener("keydown", e => {
   }
   if (target !== null) {
     // change body to next page
-    htmx.ajax('GET', target, { target: 'body', swap: 'innerHTML', push: true });
+    window.sxp.curr = curr;
+    htmx.ajax('GET', target, { target: 'body', swap: 'innerHTML', push: `${root}${window.sxp.curr}` });
     e.preventDefault();
   }
 });
