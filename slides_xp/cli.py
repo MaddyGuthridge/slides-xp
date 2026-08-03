@@ -10,7 +10,6 @@ from pathlib import Path
 
 import click
 from granian.constants import Interfaces
-from granian.log import LogLevels
 from granian.server.embed import Server
 
 from slides_xp import make_app
